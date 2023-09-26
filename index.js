@@ -12,11 +12,16 @@ const app = express();
 
 //connect to mongoDB
 const dbURI = "mongodb://127.0.0.1:27017/aBlogDB?retryWrites=true&connectTimeoutMS=10000";
+const PORT = process.env.PORT || 3000;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 .then((result) => {
     console.log("connected to db");
 
-    app.listen(3000);
+    app.listen(PORT);
+
+//const PORT = process.env.PORT || 3000;
+
+//server.listen(PORT, () => console.log((`Server running on port ${PORT}`)));
 
 }).catch((err) => {
     console.log(err);    
